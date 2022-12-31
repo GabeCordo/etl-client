@@ -1,9 +1,9 @@
-package client
+package main
 
 import (
 	"github.com/GabeCordo/commandline"
-	"github.com/GabeCordo/etl/client/controllers"
-	"github.com/GabeCordo/etl/client/core"
+	"github.com/GabeCordo/etlclient/controllers"
+	"github.com/GabeCordo/etlclient/core"
 )
 
 func CommandLineClient() {
@@ -14,24 +14,24 @@ func CommandLineClient() {
 	if commandLine := commandline.NewCommandLine(profilePath); commandLine != nil {
 
 		// other commands
-		commandLine.AddCommand("version", controllers.VersionCommand{})
+		commandLine.AddCommand("version", controllers.VersionCommand{}).SetCategory("core")
 
 		// cli core commands
-		commandLine.AddCommand("key", controllers.KeyPairCommand{})
-		commandLine.AddCommand("project", controllers.CreateProjectCommand{})
-		commandLine.AddCommand("cluster", controllers.ClusterCommand{})
-		commandLine.AddCommand("profile", controllers.ProfileCommand{})
+		commandLine.AddCommand("key", controllers.KeyPairCommand{}).SetCategory("etl")
+		commandLine.AddCommand("project", controllers.CreateProjectCommand{}).SetCategory("etl")
+		commandLine.AddCommand("cluster", controllers.ClusterCommand{}).SetCategory("etl")
+		commandLine.AddCommand("profile", controllers.ProfileCommand{}).SetCategory("etl")
 
 		//local project interaction
-		commandLine.AddCommand("deploy", controllers.DeployCommand{})
-		commandLine.AddCommand("mount", controllers.MountCommand{})
-		commandLine.AddCommand("endpoint", controllers.EndpointCommand{})
-		commandLine.AddCommand("permission", controllers.PermissionCommand{})
+		commandLine.AddCommand("deploy", controllers.DeployCommand{}).SetCategory("local project")
+		commandLine.AddCommand("mount", controllers.MountCommand{}).SetCategory("local project")
+		commandLine.AddCommand("endpoint", controllers.EndpointCommand{}).SetCategory("local project")
+		commandLine.AddCommand("permission", controllers.PermissionCommand{}).SetCategory("local project")
 
 		// remote project interaction
 
 		// remote project observation (not complete)
-		commandLine.AddCommand("interactive", controllers.InteractiveDashboardCommand{})
+		commandLine.AddCommand("dashboard", controllers.InteractiveDashboardCommand{}).SetCategory("visuals")
 
 		commandLine.Run()
 	}

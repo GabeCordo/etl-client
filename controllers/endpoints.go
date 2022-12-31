@@ -3,8 +3,8 @@ package controllers
 import (
 	"fmt"
 	"github.com/GabeCordo/commandline"
-	clientCore "github.com/GabeCordo/etl/client/core"
 	etlCore "github.com/GabeCordo/etl/core"
+	clientCore "github.com/GabeCordo/etlclient/core"
 	"github.com/GabeCordo/fack"
 	"github.com/GabeCordo/toolchain/files"
 )

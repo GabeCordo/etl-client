@@ -33,7 +33,8 @@ func (dc DeployCommand) Run(cl *commandline.CommandLine) commandline.TerminateOn
 	mainPath := files.EmptyPath().File(entryPointFile)
 	if _, err := os.Stat(mainPath.ToString()); err == nil {
 		// if the file exists run the main module
-		runEtlMainCmd := exec.Command("go run " + entryPointFile)
+		runEtlMainCmd := exec.Command("go", "run", entryPointFile)
+		runEtlMainCmd.Stdout = os.Stdout
 		if err = runEtlMainCmd.Run(); err != nil {
 			// there was an source error inside the etl project
 			log.Print(err)

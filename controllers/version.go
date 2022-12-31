@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/GabeCordo/commandline"
-	"github.com/GabeCordo/etl/client/core"
+	"github.com/GabeCordo/etlclient/core"
 )
 
 // VERSION COMMAND START

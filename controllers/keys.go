@@ -7,7 +7,7 @@ import (
 	"crypto/x509"
 	"fmt"
 	"github.com/GabeCordo/commandline"
-	"github.com/GabeCordo/etl/client/core"
+	"github.com/GabeCordo/etlclient/core"
 	"github.com/GabeCordo/fack"
 )
 

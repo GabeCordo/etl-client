@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/GabeCordo/commandline"
-	"github.com/GabeCordo/etl/client/core"
+	"github.com/GabeCordo/etlclient/core"
 	"os"
 )
 

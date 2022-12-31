@@ -3,8 +3,8 @@ package controllers
 import (
 	"fmt"
 	"github.com/GabeCordo/commandline"
-	clientCore "github.com/GabeCordo/etl/client/core"
 	etlCore "github.com/GabeCordo/etl/core"
+	clientCore "github.com/GabeCordo/etlclient/core"
 	"github.com/GabeCordo/toolchain/files"
 	"log"
 	"os"
@@ -55,7 +55,7 @@ func (cproj CreateProjectCommand) CreateProject(cl *commandline.CommandLine) com
 		"module %s\n\ngo %s\n",
 		projectName,
 		runtime.Version()[2:])
-	dependencies := []string{"github.com/GabeCordo/commandline v0.1.2", "github.com/GabeCordo/fack v0.1.2"}
+	dependencies := []string{"github.com/GabeCordo/fack v0.1.2", "github.com/GabeCordo/etl v0.1.1-alpha"}
 	if len(dependencies) > 0 {
 		stringRepOfModFile += "\nrequire("
 
@@ -125,7 +125,7 @@ func (cproj CreateProjectCommand) CreateProject(cl *commandline.CommandLine) com
 
 	// INSTALL THE GO MODULES REQUIRED BY THE TEMPLATE
 
-	cmd := exec.Command("go mod tidy")
+	cmd := exec.Command("go", "mod", "tidy")
 	if err := cmd.Run(); err != nil {
 		log.Println("(!) failed to go mod tidy, you will need to install the dependencies manually")
 	}
