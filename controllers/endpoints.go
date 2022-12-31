@@ -84,7 +84,11 @@ func (ec EndpointCommand) ShowEndpoints(cl *commandline.CommandLine) commandline
 
 	for identity, endpoint := range config.Auth.Trusted {
 		fmt.Printf("id: %s\n", identity)
-		fmt.Printf("\tglobal-permissions: %s\n", endpoint.GlobalPermissions.String())
+		if endpoint.GlobalPermissions == nil {
+			fmt.Println("\tglobal-permissions: none")
+		} else {
+			fmt.Printf("\tglobal-permissions: %s\n", endpoint.GlobalPermissions.String())
+		}
 		if (endpoint.LocalPermissions != nil) && (len(endpoint.LocalPermissions) > 0) {
 			fmt.Println("\tlocal-permissions:")
 			for route, permission := range endpoint.LocalPermissions {

@@ -54,6 +54,7 @@ Outputs all ECDSA key pairs and their respective identifier saved to the local s
 ---
 
 ### deploy
+###### This function is under development, please use **go run <project-name>.root.go** for now. 
 Runs the default entrypoint into the etl project.
 
 ---
@@ -100,19 +101,21 @@ Shows a list of clusters that are automount in the project.
 
 ---
 
-### cluster
-
-#### Variants
-
-##### 
----
-
 ### permission
 
 #### Variants
+
+##### create permission local [endpoint] [route] [http-method] [enable|disable]
+##### create permission global [endpoint] [http-method] [enable|disable]
 
 ---
 
 ### endpoint
 
 #### Variants
+
+##### show endpoint
+Display all endpoints registered to the etl project in the current working directory.
+
+##### create endpoint [key-identifier]
+Transfer an ECDSA key stored on the local system to the etl project in the current working directory.
