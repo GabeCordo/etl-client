@@ -17,6 +17,18 @@ The version command can be used to verify that the command-line is build and add
 etl version
 ```
 
+## ETL-Client Profile
+A local profile is used to identify your contributions to etl projects and allow other developers to understand who are the code owners
+of etl clusters or projects. The profile contains information such as first-last names and email contact information.
+
+```shell
+etl create profile
+```
+
+### Cluster Example
+Profile information is attached to clusters and shown when viewed in summary.
+![](.bin/show_cluster.png)
+
 ## Commands
 
 ### version
