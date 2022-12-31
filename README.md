@@ -16,3 +16,5 @@ The version command can be used to verify that the command-line is build and add
 ```
 etl version
 ```
+
+## Commands
