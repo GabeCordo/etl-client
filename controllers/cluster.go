@@ -193,7 +193,7 @@ func (cc ClusterCommand) CreateCluster(cl *commandline.CommandLine) commandline.
 	// generate test file
 
 	// does a stat file exist in the test folder with the provided Name?
-	testFilePath := projectPath.Dir("test").File(clusterName + ".etl.test.go")
+	testFilePath := projectPath.Dir("test").File(clusterName + "_test.go")
 	if testFilePath.Exists() {
 		fmt.Println("a test file already exists with the cluster Name (" + clusterName + ")")
 		return true
@@ -201,7 +201,7 @@ func (cc ClusterCommand) CreateCluster(cl *commandline.CommandLine) commandline.
 
 	// if a test file doesn't, write it to the
 	var testFileBytes []byte
-	testTemplateFilePath := clientCore.TemplateFolder().File("Name.etl.test.go")
+	testTemplateFilePath := clientCore.TemplateFolder().File("name_test.go")
 	if bytes, err := testTemplateFilePath.Read(); err != nil {
 		fmt.Println("the test file template is missing")
 		return true
@@ -247,7 +247,7 @@ func (cc ClusterCommand) DeleteCluster(cl *commandline.CommandLine) commandline.
 		srcFile.Remove()
 	}
 
-	testFile := testFolder.File(clusterName + ".etl.test.go")
+	testFile := testFolder.File(clusterName + "_test.go")
 	if testFile.Exists() {
 		testFile.Remove()
 	}

@@ -55,7 +55,7 @@ func (cproj CreateProjectCommand) CreateProject(cl *commandline.CommandLine) com
 		"module %s\n\ngo %s\n",
 		projectName,
 		runtime.Version()[2:])
-	dependencies := []string{"github.com/GabeCordo/fack v0.1.2", "github.com/GabeCordo/etl v0.1.1-alpha"}
+	dependencies := []string{"github.com/GabeCordo/fack v0.1.2", "github.com/GabeCordo/etl v0.1.2-alpha"}
 	if len(dependencies) > 0 {
 		stringRepOfModFile += "\nrequire("
 
