@@ -5,6 +5,7 @@ import (
 	"github.com/GabeCordo/commandline"
 	"github.com/GabeCordo/toolchain/files"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -16,7 +17,9 @@ func Version(commandLine *commandline.CommandLine) string {
 
 func RootEtlFolder() files.Path {
 	executableFilePath, _ := os.Executable()
-	return files.EmptyPath().Dir(executableFilePath[:len(executableFilePath)-10]) // remove "/build/etl" from the end of the path
+	t := strings.Split(executableFilePath, files.PathSeparator())
+	executableFilePath = strings.Join(t[:len(t)-1], files.PathSeparator())
+	return files.EmptyPath().Dir(executableFilePath) // remove "/build/etl" from the end of the path
 }
 
 func TemplateFolder() files.Path {
@@ -43,14 +46,16 @@ func IfMissingInitializeFolders() {
 
 	dataFolderPath := DataFolder()
 	if dataFolderPath.DoesNotExist() {
-		dataFolderPath.MkDir()
+		if err := dataFolderPath.MkDir(); err != nil {
+			fmt.Println(err)
+		}
 	}
 
 	cliConfigFilePath := CliConfigFile()
 	if cliConfigFilePath.DoesNotExist() {
 		cliConfigFilePath.Create()
 
-		fmt.Println(cliConfigFilePath.Exists())
+		fmt.Println(cliConfigFilePath.ToString())
 
 		config := commandline.NewConfig()
 		config.ToJson(cliConfigFilePath)
